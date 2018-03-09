@@ -1,7 +1,7 @@
 #数据库第一天
 数据库的作用：是为了管理和存储数据，便于程序开发
 常见的数据库:oracle db2(IBM) mysql sysbase SQLserver MongoDB(更灵活)
-
+<a name="1">体系架构</a>
 ##一 oracle 体系架构
       实例+数据库组成
       客户端向数据库发送请求
