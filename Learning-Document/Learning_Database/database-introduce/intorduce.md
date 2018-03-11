@@ -17,10 +17,12 @@
       + 逻辑结构
       + 物理结构
       + 实例
+![](./assets/markdown-img-paste-20180311135118727.png)
 #### 1.1 Oracle的逻辑结构
       Oracle的逻辑结构是一种层次结构，主要由：表空间，段，区，块等概念组成。逻辑结构主要是面向用户的。
-数据库的逻辑结构
-      ![database_struct](assets/markdown-img-paste-20180311114722360.png)
+<center><font color=grey>**数据库逻辑结构**</font></center>
+
+![](./assets/markdown-img-paste-20180311135346206.png)
 
 
       实例+数据库组成
