@@ -18,20 +18,40 @@
    - 物理结构
    - 实例
 
-![数据库架构](assets/markdown-img-paste-20180311135118727.png)
+<!--[数据库架构](assets/markdown-img-paste-20180311135118727.png)-->
+<center><img width=50% height=50% src="assets/markdown-img-paste-20180311135118727.png"/></center>
+
 #### 1.1 Oracle的逻辑结构
       Oracle的逻辑结构是一种层次结构，主要由：表空间，段，区，块等概念组成。逻辑结构主要是面向用户的。
 <center><font color=grey>**数据库逻辑结构**</font></center>
 
-![数据库逻辑结构](assets/markdown-img-paste-20180311135346206.png)
 
-#### 1.2 数据块
-数据块是Oracle的最小存储单位，oracle的数据存放在块中。一个块占用一定的磁盘空间。
+<center><img width=50% height=50% src="assets/markdown-img-paste-20180311135346206.png"/></center>
+
+#### 1.2 数据块  </br>
+
+ + 数据块是Oracle的最小存储单位，oracle的数据存放在块中。一个块占用一定的磁盘空间。
 >注意：</br>
 > <font color="grey">1 这里的块儿是oracle数据块，不是操作系统块儿.</font></br>
 > <font color="grey">2 Oracle每次请求数据，都是以块为单位，就是说，每次读取的数据都是块的整数倍，如果数据不够一块，也回按照整块的读取</font></br>
 > <font color="grey">3 块的标准化大小由初始化参数DB_BLOCK_SIZE指定，块的大小和标准块的大小称为非标准块</font></br>
-> <font color="grey">4 操作系统执行I/O是以操作系统块为单位，oracle数据库执行I/O是以oracle块为代表<font></br>
+> <font color="grey">4 操作系统执行I/O是以操作系统块为单位，oracle数据库执行I/O是以oracle块为代表</font></br>
+> <font color="grey">5 oracle数据块的大小一边是操作系统数据块的整数倍</font></br>
+
+ + 数据块的格式
+<!--![数据块格式](assets/markdown-img-paste-20180311151048293.png)-->
+<center><img width="250" height="200" src="assets/markdown-img-paste-20180311151048293.png"/></center>
+
+
+| 结构     | 功能                                                                                 |
+| -------- | ------------------------------------------------------------------------------------ |
+| 块头     | 存放块的基本信息,如：块的物理地址，块所属段的类型（数据段还是索引段）。 |
+| 表目录   | 存放表的信息，如果一个表的数据被存放在这个块中，这个表的相关信息就被存放在“表目录”中。|
+| 行目录   | 如果块中中有行数据存在，那么这些数据会被记录在行目录中，这些信息包括行的地址等等。|
+| 自由空间 | 空余空间是一个块中未使用的区域，这片区域用于新行的插入和已经存在的行的更新。|
+| 行数据   | 是真正存放表数据和索引数据的地方。这部分空间是已被数据行占用的空间。        |
+|          |                                                                                      |
+
 
 
       实例+数据库组成
