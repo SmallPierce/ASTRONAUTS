@@ -14,15 +14,24 @@
 
 ## 一 数据库体系架构
 ### oracle 数据库的架构
-      + 逻辑结构
-      + 物理结构
-      + 实例
+   - 逻辑结构
+   - 物理结构
+   - 实例
+
 ![数据库架构](assets/markdown-img-paste-20180311135118727.png)
 #### 1.1 Oracle的逻辑结构
       Oracle的逻辑结构是一种层次结构，主要由：表空间，段，区，块等概念组成。逻辑结构主要是面向用户的。
 <center><font color=grey>**数据库逻辑结构**</font></center>
 
 ![数据库逻辑结构](assets/markdown-img-paste-20180311135346206.png)
+
+#### 1.2 数据块
+数据块是Oracle的最小存储单位，oracle的数据存放在块中。一个块占用一定的磁盘空间。
+>注意：</br>
+> <font color="grey">1 这里的块儿是oracle数据块，不是操作系统块儿.</font></br>
+> <font color="grey">2 Oracle每次请求数据，都是以块为单位，就是说，每次读取的数据都是块的整数倍，如果数据不够一块，也回按照整块的读取</font></br>
+> <font color="grey">3 块的标准化大小由初始化参数DB_BLOCK_SIZE指定，块的大小和标准块的大小称为非标准块</font></br>
+> <font color="grey">4 操作系统执行I/O是以操作系统块为单位，oracle数据库执行I/O是以oracle块为代表<font></br>
 
 
       实例+数据库组成
@@ -42,3 +51,9 @@
 
       表空间 段  区  块之间的关系
       表空间是有段组成，段是区的集合，区是数据块的集合，数据块会被映射到磁盘上
+
+参考资料
+-----
+请各位遵循 [Markdown: License][license] 及其它参考文献的共享协议来使用、修改和发布。
+
+[ORACLE体系结构](http://blog.csdn.net/sinat_33363493/article/details/51782609)
