@@ -190,8 +190,8 @@
     + 注意：
       + update的时候。可以使用sal=null的格式
       + 使用update时，一定要加where条件，否则会修改表里面的所有数据
-+ 3.2 delete 操作
-语法：</br>
++ 3.2 delete 操作/truncate
+delete语法：</br>
   ```sql
   delete from table_name where condition1 ...
   ```
@@ -203,3 +203,36 @@
 
     + 注意：
       + 使用delete时，一定要加where条件，否则会修改表里面的所有数据
+    + delete和truncate的区别
+      + delete逐条删除表中的内容，truncate是先将表毁掉，之后再重新建立表。（由于delete使用频繁，oracle在对delete优化后，delete快于truncate）
+      + delete是DML语句，truncate是DDL语句。DML语句可以闪回， DDL语句不可以闪回（闪回，一个操作错误之后并且commit之后，对应的撤回的行为）。
+      + 由于delete是逐条操作语句，所以delete操作会产生碎片，truncate不会产生碎片。
+        两个数据之间的数据被删除，删除的数据一一碎片，整理碎片，数据连续，行移动。
+      + delete不会释放空间，truncate会释放空间。所以，delete可以回滚数据，而truncate是不可以回滚，确认表不在使用，可以使用truncate直接删除。
+      + delete可以回滚rollback，truncate不可以回滚数据。
+
+
++ 3.3 批量的生成一个sql插入一个长10000的数据，之后查看delete和truncate的区别。
+  + [shell脚本](Learning-Document/Learning_Database/oracle-operate/code/test.sh)，执行命令重定向后，生成一个批量插入数据的sql脚本。
+  + 在oracle中执行sql脚本
+    - @ sql脚本所在路径/脚本
+    - start 脚本
+  + 使用delete删除数据。
+  + 使用truncate删除。
+## <a name="H-5">五 事务相关 </a>
++ 事务的概念：
+  - 事务， 是由有限的数据库操作序列组成的逻辑执行单元。这一系列的操作要不全部执行，要不全部放弃执行。
+  - 事务的组成
+    - 一个或者多个DML语句
+    - 一个DDL语句
+    - 一个DCL语句
+  - 事务的特点，要不全部成功，要不全部失败。
+  - 事务开始和结束
+    - 开始：事务以DML语句开始，执行一系列的数据插入或者修改操作
+    - 结束：
+      - 1 提交结束:commit</br>
+          隐私提交：执行DDL语句（如执行一个create表操作），正常退出
+      - 2 显式回滚：rollback</br>
+          隐式回滚：断电，宕机，异常退出等等。
+  - 事务的特性：
+    - 
