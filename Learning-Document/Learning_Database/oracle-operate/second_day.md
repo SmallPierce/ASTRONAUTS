@@ -137,10 +137,11 @@
 ## <a name="H-4">四 数据库DML 增删查改</a>
 + 4.1 insert 操作</br>
 
-      语法： </br>
+    语法:
+
     ```sql
-    insert into tablename （col1,col2,col3....） values (val1,val2,val3...)
-      ```
+    insert into tablename （col1,col2,col3....） values (val1,val2,val3...);
+    ```
    - 示例
       + 全部列插入
       ```sql
