@@ -12,3 +12,5 @@
   * [计数排序](/DataStruct-Arithetic/sort-rank-arithmetic/Counting_Sort.md)
   * [桶排序](/DataStruct-Arithetic/sort-rank-arithmetic/Bucket_Sort.md)
   * [基数排序](/DataStruct-Arithetic/sort-rank-arithmetic/Radix_Sort.md)
+## 1 排序的定义
+  排序是将一个数据元素的任何序列，重新排成一个关键字有序的序列

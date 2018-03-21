@@ -352,22 +352,46 @@ delete语法：</br>
     CREATE TABLE emp_self (tid number, tname varchar(20));
     ```
     - 拷贝建表
-    1 只拷贝表结构，利用where条件为假，未能初始表的序列
-    ```sql
-    CREATE TABLE emp_self as SELECT * from emp where 1=2;
-    ```
-    2 部分拷贝，利用where为真，之后部分初始化
-    ```sql
-    CREATE TABLE emp_self as SELECT * from emp WHERE deptno=20;
-    ```
-    3 拷贝建表，复制一份表
-    ```sql
-    CREATE TABLE emp_self as SELECT * from emp;
-    ```
-    4 可以通过拷贝重新给表的列命名，可以进行表的移植和迁移等工作。
-    ```sql
-    CREATE TABLE emp_self as SELECT ename e1name,hiredate hdate,emono no from emp;
-    ```
+      - 1 只拷贝表结构，利用where条件为假，未能初始表的序列
+      ```sql
+      CREATE TABLE emp_self as SELECT * from emp where 1=2;
+      ```
+      - 2 部分拷贝，利用where为真，之后部分初始化
+      ```sql
+      CREATE TABLE emp_self as SELECT * from emp WHERE deptno=20;
+      ```
+      - 3 拷贝建表，复制一份表
+      ```sql
+      CREATE TABLE emp_self as SELECT * from emp;
+      ```
+      - 4 可以通过拷贝重新给表的列命名，可以进行表的移植和迁移等工作。
+      ```sql
+      CREATE TABLE emp_self as SELECT ename e1name,hiredate hdate,emono no from emp;
+      ```
 
   - 表的修改
-    -
+    - 添加某一列
+      ```sql
+      alter TABLE emp_self add email varchar2(20);
+      ```
+      修改列属性
+      ```sql
+      alter TABLE emp_self modify email varchar2(40); //加长可以，缩短的话要考虑是否会造成数据丢失
+      ```
+      修改列名
+      ```sql
+      alter TABLE emp_self rename column email to address;
+      ```
+      删除列
+      ```sql
+      alter TABLE emp_self drop column email
+      ```
+  - 表的删除
+    - 表删除可以闪回
+    ```sql
+    drop TABLE emp_self;
+    ```
+    - 直接删除，不可回闪。干净删除
+    ```sql
+    drop TABLE emp_self purge;
+    ```
