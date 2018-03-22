@@ -1,3 +1,5 @@
+<!--![logo](assets/markdown-img-paste-20180322162239233.png)-->
+<center><img width=100% height=100% src="assets/markdown-img-paste-20180322162239233.png"/></center>
 C语言文档
 ========
 
