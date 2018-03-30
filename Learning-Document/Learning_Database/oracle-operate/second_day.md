@@ -136,11 +136,15 @@
     + 3.2.2 集合的运算性能一般比较大
 ## <a name="H-4">四 数据库DML 增删查改</a>
 + 4.1 insert 操作</br>
+<<<<<<< HEAD
+=======
 
-      语法： </br>
+    语法:
+>>>>>>> 8b09a1f9efdc0e77e3c5f9e23fcaf5dd6f904d71
+
     ```sql
-    insert into tablename （col1,col2,col3....） values (val1,val2,val3...)
-      ```
+    insert into tablename （col1,col2,col3....） values (val1,val2,val3...);
+    ```
    - 示例
       + 全部列插入
       ```sql
@@ -191,10 +195,14 @@
       + update的时候。可以使用sal=null的格式
       + 使用update时，一定要加where条件，否则会修改表里面的所有数据
 <<<<<<< HEAD
+<<<<<<< HEAD
 + 4.2 delete 操作/truncate
 =======
 + 3.2 delete 操作/truncate
 >>>>>>> origin/master
+=======
++ 4.3 delete 操作/truncate
+>>>>>>> 8b09a1f9efdc0e77e3c5f9e23fcaf5dd6f904d71
 delete语法：</br>
   ```sql
   delete from table_name where condition1 ...
@@ -217,15 +225,22 @@ delete语法：</br>
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 + 4.3 批量的生成一个sql插入一个长10000的数据，之后查看delete和truncate的区别。
 =======
 + 3.3 批量的生成一个sql插入一个长10000的数据，之后查看delete和truncate的区别。
 >>>>>>> origin/master
+=======
+
++ 4.3 批量的生成一个sql插入一个长10000的数据，之后查看delete和truncate的区别。
+
+>>>>>>> 8b09a1f9efdc0e77e3c5f9e23fcaf5dd6f904d71
   + [shell脚本](Learning-Document/Learning_Database/oracle-operate/code/test.sh)，执行命令重定向后，生成一个批量插入数据的sql脚本。
   + 在oracle中执行sql脚本
     - @ sql脚本所在路径/脚本
     - start 脚本
   + 使用delete删除数据。
+<<<<<<< HEAD
 <<<<<<< HEAD
   + 使用truncate删除数据。
 ## <a name="H-5">四 事务相关 </a>
@@ -235,6 +250,14 @@ delete语法：</br>
 ## <a name="H-5">五 事务相关 </a>
 + 事务的概念：
 >>>>>>> origin/master
+=======
+
+  + 使用truncate删除数据。
+
+## <a name="H-5">五 事务相关 </a>
++ 事务的概念：
+
+>>>>>>> 8b09a1f9efdc0e77e3c5f9e23fcaf5dd6f904d71
   - 事务， 是由有限的数据库操作序列组成的逻辑执行单元。这一系列的操作要不全部执行，要不全部放弃执行。
   - 事务的组成
     - 一个或者多个DML语句
@@ -249,6 +272,10 @@ delete语法：</br>
       - 2 显式回滚：rollback</br>
           隐式回滚：断电，宕机，异常退出等等。
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b09a1f9efdc0e77e3c5f9e23fcaf5dd6f904d71
   - 事务的特性：ACID
     - 原子性(Atom)：事务的原子性是指事务中的全部操作是不可分割的，要不全部完成，要不均不执行
     - 一致性(Consistency)：几个并行执行的事务，其执行的结果必须按某一执行顺序串行执行的结果相一致。
@@ -353,8 +380,61 @@ delete语法：</br>
   SELECT ROWID,ename, deptno,sal FROM emp;
   ```
 > 查询该语句可以rowid列存储的是一系列的地址（指针），创建索引时候回用到。
+<<<<<<< HEAD
 +11111111111111111
 =======
   - 事务的特性：
     -
 >>>>>>> origin/master
+=======
+
+  - 创建表
+    - 默认创建
+    ```sql
+    CREATE TABLE emp_self (tid number, tname varchar(20));
+    ```
+    - 拷贝建表
+      - 1 只拷贝表结构，利用where条件为假，未能初始表的序列
+      ```sql
+      CREATE TABLE emp_self as SELECT * from emp where 1=2;
+      ```
+      - 2 部分拷贝，利用where为真，之后部分初始化
+      ```sql
+      CREATE TABLE emp_self as SELECT * from emp WHERE deptno=20;
+      ```
+      - 3 拷贝建表，复制一份表
+      ```sql
+      CREATE TABLE emp_self as SELECT * from emp;
+      ```
+      - 4 可以通过拷贝重新给表的列命名，可以进行表的移植和迁移等工作。
+      ```sql
+      CREATE TABLE emp_self as SELECT ename e1name,hiredate hdate,emono no from emp;
+      ```
+
+  - 表的修改
+    - 添加某一列
+      ```sql
+      alter TABLE emp_self add email varchar2(20);
+      ```
+      修改列属性
+      ```sql
+      alter TABLE emp_self modify email varchar2(40); //加长可以，缩短的话要考虑是否会造成数据丢失
+      ```
+      修改列名
+      ```sql
+      alter TABLE emp_self rename column email to address;
+      ```
+      删除列
+      ```sql
+      alter TABLE emp_self drop column email
+      ```
+  - 表的删除
+    - 表删除可以闪回
+    ```sql
+    drop TABLE emp_self;
+    ```
+    - 直接删除，不可回闪。干净删除
+    ```sql
+    drop TABLE emp_self purge;
+    ```
+>>>>>>> 8b09a1f9efdc0e77e3c5f9e23fcaf5dd6f904d71
