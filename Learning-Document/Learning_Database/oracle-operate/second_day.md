@@ -190,7 +190,11 @@
     + 注意：
       + update的时候。可以使用sal=null的格式
       + 使用update时，一定要加where条件，否则会修改表里面的所有数据
+<<<<<<< HEAD
 + 4.2 delete 操作/truncate
+=======
++ 3.2 delete 操作/truncate
+>>>>>>> origin/master
 delete语法：</br>
   ```sql
   delete from table_name where condition1 ...
@@ -212,15 +216,25 @@ delete语法：</br>
       + delete可以回滚rollback，truncate不可以回滚数据。
 
 
+<<<<<<< HEAD
 + 4.3 批量的生成一个sql插入一个长10000的数据，之后查看delete和truncate的区别。
+=======
++ 3.3 批量的生成一个sql插入一个长10000的数据，之后查看delete和truncate的区别。
+>>>>>>> origin/master
   + [shell脚本](Learning-Document/Learning_Database/oracle-operate/code/test.sh)，执行命令重定向后，生成一个批量插入数据的sql脚本。
   + 在oracle中执行sql脚本
     - @ sql脚本所在路径/脚本
     - start 脚本
   + 使用delete删除数据。
+<<<<<<< HEAD
   + 使用truncate删除数据。
 ## <a name="H-5">四 事务相关 </a>
 + 5.1 事务的概念：
+=======
+  + 使用truncate删除。
+## <a name="H-5">五 事务相关 </a>
++ 事务的概念：
+>>>>>>> origin/master
   - 事务， 是由有限的数据库操作序列组成的逻辑执行单元。这一系列的操作要不全部执行，要不全部放弃执行。
   - 事务的组成
     - 一个或者多个DML语句
@@ -234,6 +248,7 @@ delete语法：</br>
           隐私提交：执行DDL语句（如执行一个create表操作），正常退出
       - 2 显式回滚：rollback</br>
           隐式回滚：断电，宕机，异常退出等等。
+<<<<<<< HEAD
   - 事务的特性：ACID
     - 原子性(Atom)：事务的原子性是指事务中的全部操作是不可分割的，要不全部完成，要不均不执行
     - 一致性(Consistency)：几个并行执行的事务，其执行的结果必须按某一执行顺序串行执行的结果相一致。
@@ -339,3 +354,7 @@ delete语法：</br>
   ```
 > 查询该语句可以rowid列存储的是一系列的地址（指针），创建索引时候回用到。
 +11111111111111111
+=======
+  - 事务的特性：
+    -
+>>>>>>> origin/master
