@@ -9,6 +9,8 @@
  6 优化选择排序：使用flag？
 #### 图解
 ![](assets/selection_sort.gif)
+
+![](assets/selection_sort_1.gif)
 #### 代码实现
 ```c
 //选择排序
